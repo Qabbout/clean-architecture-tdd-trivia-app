@@ -4,7 +4,7 @@ A flutter project following the CLEAN architetcture and TDD (test driven develop
 
 ## Screenshot
 
-![sc1](screenshots/sc.png)
+<img src="screenshots/sc.png" alt="sc" width="150"/>
 
 ## Note
 
