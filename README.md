@@ -1,16 +1,12 @@
-# clean_arch_tdd_trivia_app
+# Clean Arch Tdd Trivia App
 
-A new Flutter project.
+A flutter project following the CLEAN architetcture and TDD (test driven development),as explained in this [playlist tutorial](https://youtube.com/playlist?list=PLB6lc7nQ1n4iYGE_khpXRdJkJEp9WOech) by Reso Coder. It is a number trivia app for concrete and/or random numbers using <http://numbersapi.com/>.
 
-## Getting Started
+## Screenshot
 
-This project is a starting point for a Flutter application.
+![sc1](screenshots/sc.png)
 
-A few resources to get you started if this is your first Flutter project:
+## Note
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+this project is not 100% the same, I had to do some changes and in order for it to work with flutter 2.0, as well as some personal touches.
+Also I would like to thank [Reso Coder](https://www.youtube.com/c/ResoCoder) for the amazing explanantion of the CLEAN architetcture and TDD.
