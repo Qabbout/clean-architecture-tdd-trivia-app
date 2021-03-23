@@ -17,6 +17,7 @@ class MockGeRandomNumberTrivia extends Mock implements GetRandomNumberTrivia {}
 class MockInputConverter extends Mock implements InputConverter {}
 
 void main() {
+  // ignore: close_sinks
   NumberTriviaBloc bloc;
   MockGetConcreteNumberTrivia mockGetConcreteNumberTrivia;
   MockGeRandomNumberTrivia mockGeRandomNumberTrivia;
@@ -54,7 +55,7 @@ void main() {
       //arrange
       setUpMockInputConverterSuccess();
       //act
-      bloc.dispatch(GetTriviaForConcreteNumber(tNumberString));
+      bloc.add(GetTriviaForConcreteNumber(tNumberString));
       await untilCalled(mockInputConverter.stringToUnsignedInteger(any));
       //assert
       verify(mockInputConverter.stringToUnsignedInteger(tNumberString));
@@ -68,7 +69,7 @@ void main() {
       final expected = [Empty(), Error(message: INVALID_INPUT_FAILURE_MESSAGE)];
       expectLater(bloc.state, emitsInOrder(expected));
       //act
-      bloc.dispatch(GetTriviaForConcreteNumber(tNumberString));
+      bloc.add(GetTriviaForConcreteNumber(tNumberString));
     });
     test('should get data from the concrete use case', () async {
       //arrange
@@ -77,7 +78,7 @@ void main() {
       when(mockGetConcreteNumberTrivia(any))
           .thenAnswer((_) async => Right(tNumberTrivia));
       //act
-      bloc.dispatch(GetTriviaForConcreteNumber(tNumberString));
+      bloc.add(GetTriviaForConcreteNumber(tNumberString));
       await untilCalled(mockGetConcreteNumberTrivia(any));
       //assert
       verify(mockGetConcreteNumberTrivia(Params(number: tNumberParsed)));
@@ -92,7 +93,7 @@ void main() {
       final expected = [Empty(), Loading(), Loaded(trivia: tNumberTrivia)];
       expectLater(bloc.state, emitsInOrder(expected));
       //act
-      bloc.dispatch(GetTriviaForConcreteNumber(tNumberString));
+      bloc.add(GetTriviaForConcreteNumber(tNumberString));
     });
     test('should emit [Loading, Error] when data  is gotten fails', () async {
       //arrange
@@ -107,7 +108,7 @@ void main() {
       ];
       expectLater(bloc.state, emitsInOrder(expected));
       //act
-      bloc.dispatch(GetTriviaForConcreteNumber(tNumberString));
+      bloc.add(GetTriviaForConcreteNumber(tNumberString));
     });
     test(
         'should emit [Loading, Error] with proper message for the error when getting data fails',
@@ -124,7 +125,7 @@ void main() {
       ];
       expectLater(bloc.state, emitsInOrder(expected));
       //act
-      bloc.dispatch(GetTriviaForConcreteNumber(tNumberString));
+      bloc.add(GetTriviaForConcreteNumber(tNumberString));
     });
   });
 
@@ -135,7 +136,7 @@ void main() {
       when(mockGeRandomNumberTrivia(any))
           .thenAnswer((_) async => Right(tNumberTrivia));
       //act
-      bloc.dispatch(GetTriviaForRandomNumber());
+      bloc.add(GetTriviaForRandomNumber());
       await untilCalled(mockGeRandomNumberTrivia(any));
       //assert
       verify(mockGeRandomNumberTrivia(NoParams()));
@@ -149,7 +150,7 @@ void main() {
       final expected = [Empty(), Loading(), Loaded(trivia: tNumberTrivia)];
       expectLater(bloc.state, emitsInOrder(expected));
       //act
-      bloc.dispatch(GetTriviaForRandomNumber());
+      bloc.add(GetTriviaForRandomNumber());
     });
     test('should emit [Loading, Error] when data is gotten fails', () async {
       //arrange
@@ -163,7 +164,7 @@ void main() {
       ];
       expectLater(bloc.state, emitsInOrder(expected));
       //act
-      bloc.dispatch(GetTriviaForRandomNumber());
+      bloc.add(GetTriviaForRandomNumber());
     });
     test(
         'should emit [Loading, Error] with proper message for the error when getting data fails',
@@ -179,7 +180,7 @@ void main() {
       ];
       expectLater(bloc.state, emitsInOrder(expected));
       //act
-      bloc.dispatch(GetTriviaForRandomNumber());
+      bloc.add(GetTriviaForRandomNumber());
     });
   });
 }
